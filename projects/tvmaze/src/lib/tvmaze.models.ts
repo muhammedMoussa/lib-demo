@@ -1,4 +1,4 @@
-interface RootObject {
+export interface RootObject {
     id: number;
     url: string;
     name: string;
@@ -21,43 +21,43 @@ interface RootObject {
     _links: Links;
   }
 
-  interface Links {
+  export interface Links {
     self: Self;
     previousepisode: Self;
   }
 
-  interface Self {
+  export interface Self {
     href: string;
   }
 
-  interface Image {
+  export interface Image {
     medium: string;
     original: string;
   }
 
-  interface Externals {
+  export interface Externals {
     tvrage: number;
     thetvdb: number;
     imdb: string;
   }
 
-  interface Network {
+  export interface Network {
     id: number;
     name: string;
     country: Country;
   }
 
-  interface Country {
+  export interface Country {
     name: string;
     code: string;
     timezone: string;
   }
 
-  interface Rating {
+  export interface Rating {
     average: number;
   }
 
-  interface Schedule {
+  export interface Schedule {
     time: string;
     days: string[];
   }
