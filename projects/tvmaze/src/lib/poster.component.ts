@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { TvmazeService } from './tvmaze.service';
 
 @Component({
-    selector: 'ts-poster',
+    selector: 'tm-poster',
     template: `<img *ngIf="posterUrl$ | async as src" [src]"="src" />`,
     styles: [`
         :host {
