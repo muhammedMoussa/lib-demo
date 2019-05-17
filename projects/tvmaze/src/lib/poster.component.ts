@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -6,7 +6,10 @@ import { TvmazeService } from './tvmaze.service';
 
 @Component({
     selector: 'tm-poster',
-    template: `<img *ngIf="posterUrl$ | async as src" [src]"="src" />`,
+    template: `
+        <img *ngIf="posterUrl$ | async as src" [src]="src" alt="poster.."/>
+        <p>I'm Working 👌</p>
+    `,
     styles: [`
         :host {
             display: inline-block;
@@ -17,7 +20,7 @@ import { TvmazeService } from './tvmaze.service';
     `]
 })
 
-export class PosterComponent implements OnInit {
+export class PosterComponent implements OnInit, AfterViewInit {
     @Input() showId: number;
     posterUrl$: Observable<string>;
 
@@ -27,5 +30,9 @@ export class PosterComponent implements OnInit {
         this.posterUrl$ = this.tvmaze
             .getShow(this.showId)
             .pipe(map(show => show.image.medium))
+    }
+
+    ngAfterViewInit() {
+        this.posterUrl$.subscribe(res => console.log(res));
     }
 }
